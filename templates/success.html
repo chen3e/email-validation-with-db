@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>success</title>
+        <meta charset="UTF-8">
+        <style>
+        #list{
+            width: 500px;
+            margin: auto;
+        }
+        #submit{
+            width: 10%;
+            margin: 0% 45% 0% 45%;
+        }
+        #message{
+            text-align: center;
+        }
+        .email > *{
+            display: inline-block;
+        }
+        .email :last-child{
+            margin-left: 30%;
+        }
+        </style>
+        <!--line below is for bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+    <body>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <p id="message">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        <div id="list">
+            {% for item in results %}
+            <div class = "email">
+                <p>{{ item['email'] }}</p>
+                <p>{{ item['created_at'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <form id="wrapper" action="/">
+        <input id="submit" type="submit" value="Go back">
+        </form>
+    </body>
+</html>
